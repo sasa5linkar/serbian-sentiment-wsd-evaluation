@@ -93,3 +93,9 @@ Code, documentation and synthetic examples use [Apache-2.0](LICENSE). External l
 python -m pip install -e ".[dev]"
 python -m pytest
 ```
+
+## WSD checkpoint publication
+
+The distilled WSD checkpoints are separate from the sentiment classifiers. Their [model cards and publication/download procedure](https://github.com/sasa5linkar/serbian-wsd-distillation/blob/main/docs/huggingface_models.md) are maintained with the distillation software. Weights are not yet released; the evaluator accepts a complete local checkpoint directory. Use the exact Hub revision from a publication receipt once one is available.
+
+For a reusable application API and an offline example, see the [Serbian WordNet Sentiment Toolkit](https://github.com/sasa5linkar/serbian-wordnet-sentiment-toolkit). The toolkit reports zero coverage as `unscored`; this research evaluator preserves its neutral fallback.
