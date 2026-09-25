@@ -1,0 +1,5 @@
+ID,POS,NEG,Lemme,Vrsta
+DEMO-good,0.8,0.1,dobar,a
+DEMO-good-other,0.1,0.0,dobar,a
+DEMO-bad,0.1,0.8,loš,a
+DEMO-ordinary,0.0,0.0,običan,a

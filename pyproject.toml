@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "serbian-sentiment-wsd-eval"
+version = "0.1.0"
+description = "Sentence-level evaluation of Serbian WordNet sentiment resources."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "Saša Petalinkar"}]
+dependencies = [
+  "openpyxl>=3.0",
+]
+
+[project.optional-dependencies]
+wsd = [
+  "torch>=2.0.0",
+  "transformers>=4.40.0",
+  "safetensors>=0.4.0",
+]
+dev = [
+  "pytest>=7.4",
+]
+
+[project.scripts]
+sswe = "serbian_sentiment_wsd_eval.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[project.urls]
+Repository = "https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation"
+Issues = "https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation/issues"

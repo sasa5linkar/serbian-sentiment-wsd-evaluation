@@ -1,0 +1,5 @@
+sample_id	token_index	token_text	upos	lemma
+DEMO-1	0	Dobar	ADJ	dobar
+DEMO-2	0	Loš	ADJ	loš
+DEMO-3	0	Običan	ADJ	običan
+DEMO-4	0	Nedostaje	VERB	nedostajati

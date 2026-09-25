@@ -1,0 +1,31 @@
+{
+  "source": "Dissertation section 5.11, reported table",
+  "n": 2536,
+  "label_counts": {
+    "negative": 908,
+    "neutral": 989,
+    "positive": 639
+  },
+  "thresholds": {
+    "A7-avg2": 0.02,
+    "A7-wsd": 0.01,
+    "A6-avg2": 0.02,
+    "A5-avg2": 0.03,
+    "A2-avg2": 0.02,
+    "A5-wsd": 0.01,
+    "L0": 0,
+    "A4-wsd": 0.01,
+    "A4-avg2": 0.03,
+    "A6-wsd": 0.01,
+    "A2-wsd": 0,
+    "A3-avg2": 0.01,
+    "S0-wsd": 0,
+    "A3-wsd": 0.01,
+    "A1-wsd": 0.14,
+    "A1-avg2": 0.2
+  },
+  "aggregation": "Mean POS-NEG over covered units; avg2 first averages all synsets matching lemma+POS",
+  "threshold_comparison": "positive if score > theta; negative if score < -theta; neutral otherwise",
+  "uncovered": "Excluded from mean contributions; no contributions gives neutral with zero coverage",
+  "demo_threshold": 0.1
+}

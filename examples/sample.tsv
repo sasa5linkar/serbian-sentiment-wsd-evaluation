@@ -1,0 +1,5 @@
+sample_id	sentence_text	sentiment_label
+DEMO-1	Dobar.	positive
+DEMO-2	Loš.	negative
+DEMO-3	Običan.	neutral
+DEMO-4	Nedostaje.	negative

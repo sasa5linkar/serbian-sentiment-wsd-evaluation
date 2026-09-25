@@ -1,0 +1,5 @@
+sentence_id	target_type	token_indices	target_text	lemma	upos	KBid	NumberOfSenses	Possible	Explanation	Origine
+DEMO-1	token	0	Dobar	dobar	ADJ	DEMO-good	2	DEMO-good;DEMO-good-other	synthetic decision	DEMO
+DEMO-2	token	0	Loš	loš	ADJ	DEMO-bad	1	DEMO-bad	synthetic decision	DEMO
+DEMO-3	token	0	Običan	običan	ADJ	DEMO-ordinary	1	DEMO-ordinary	synthetic decision	DEMO
+DEMO-4	token	0	Nedostaje	nedostajati	VERB	NEW_SENSE	0		synthetic coverage gap	DEMO

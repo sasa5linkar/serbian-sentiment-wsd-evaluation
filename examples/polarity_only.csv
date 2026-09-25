@@ -1,0 +1,5 @@
+ID,POS,NEG
+DEMO-good,0.8,0.1
+DEMO-good-other,0.1,0.0
+DEMO-bad,0.1,0.8
+DEMO-ordinary,0.0,0.0

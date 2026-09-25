@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite this software when using the implementation. See README for related research."
+type: software
+title: "Serbian Sentiment WSD Evaluation"
+authors:
+  - family-names: Petalinkar
+    given-names: Saša
+version: 0.1.0
+date-released: 2026-09-25
+license: Apache-2.0
+repository-code: "https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation"
+url: "https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation"
