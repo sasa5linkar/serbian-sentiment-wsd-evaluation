@@ -9,7 +9,7 @@ This public package accompanies section 5.11 of Saša Petalinkar's doctoral diss
 Python 3.10+ is required; tested on Python 3.12. In an activated virtual environment:
 
 ```bash
-git clone --branch v0.1.0 https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation.git
+git clone https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation.git
 cd serbian-sentiment-wsd-evaluation
 python -m pip install .
 python examples/run_demo.py
@@ -71,6 +71,42 @@ sswe run-distilled-wsd --annotations-jsonl data/input/annotations.jsonl --sense-
 ```
 
 [Serbian WSD Distillation](https://github.com/sasa5linkar/serbian-wsd-distillation) contains the related training/evaluation package. The separate `run-wsd` first-candidate integration requires an external serbian-agentic-wsd checkout; it is not needed for scoring or the bundled example.
+
+## Optional Hugging Face example
+
+[examples/load_hf_wsd.py](examples/load_hf_wsd.py) offers all three published rankers:
+
+| Option | Model | When to choose it |
+|---|---|---|
+| `mling` (default) | [E5 Large](https://huggingface.co/Tanor/serbian-wsd-distilled-e5-large) | Starting choice: highest reported strict WSD accuracy of these three (72.6%). |
+| `simple` | [MiniLM](https://huggingface.co/Tanor/serbian-wsd-distilled-minilm) | Smaller download: about 91 MB of weights; reported strict accuracy 68.5%. |
+| `tesla` | [TeslaXLM](https://huggingface.co/Tanor/serbian-wsd-distilled-teslaxlm) | Comparison model; reported strict accuracy 51.3%, without improvement after distillation. |
+
+These are the dissertation's reported results, not scores from this example. E5 and TeslaXLM each have about 2.24 GB of weights. The default only selects a model; it does not authorize a download.
+
+List choices without installing model libraries:
+
+~~~bash
+python examples/load_hf_wsd.py --list
+~~~
+
+Run the small ranking example in a separate optional environment. This first call explicitly downloads MiniLM; replace `simple` with `mling` or `tesla` to choose another model:
+
+~~~bash
+uv run --no-project --with "sentence-transformers==5.5.0" --with "transformers==5.8.1" python examples/load_hf_wsd.py --model simple --download
+~~~
+
+Subsequent calls can omit `--download` to use the pinned cached copy. Use `--local-dir PATH` to read a complete existing checkpoint, or combine it with `--download` to download into that directory. Package installation by `uv` is separate from model download; `--no-project` keeps these example dependencies separate from the project's environment.
+
+The example loads only local files after the explicit download, reads the saved `text_prefix` (including E5's `query: `), and lets SentenceTransformers load the saved pooling and tokenizer settings. It ranks two illustrative Serbian definitions and prints sense IDs with cosine scores. The sample is a usage demonstration, not an accuracy test or a full sentiment pipeline. A supplied local directory is used as-is; the pinned revision applies to Hub downloads and cached snapshots.
+
+To obtain only the checkpoint for the existing application, without running the example:
+
+~~~bash
+uv run --no-project --with huggingface_hub python examples/load_hf_wsd.py --model mling --download --download-only --local-dir models/wsd-distilled-mling
+~~~
+
+Use the downloaded directory with the existing `sswe run-distilled-wsd --model` option. When selecting MiniLM or TeslaXLM for that evaluator, also pass `--text-prefix ""`.
 
 ## Citation and license
 
