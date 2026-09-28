@@ -96,6 +96,14 @@ python -m pytest
 
 ## WSD checkpoint publication
 
-The distilled WSD checkpoints are separate from the sentiment classifiers. Their [model cards and publication/download procedure](https://github.com/sasa5linkar/serbian-wsd-distillation/blob/main/docs/huggingface_models.md) are maintained with the distillation software. Weights are not yet released; the evaluator accepts a complete local checkpoint directory. Use the exact Hub revision from a publication receipt once one is available.
+The distilled WSD checkpoints are now public: [E5 Large (`mling`)](https://huggingface.co/Tanor/serbian-wsd-distilled-e5-large), [MiniLM (`simple`)](https://huggingface.co/Tanor/serbian-wsd-distilled-minilm), and [TeslaXLM (`tesla`)](https://huggingface.co/Tanor/serbian-wsd-distilled-teslaxlm). These rank candidate senses and are separate from the sentiment classifiers. Their [model cards, licenses, and pinned revisions](https://github.com/sasa5linkar/serbian-wsd-distillation/blob/main/docs/huggingface_models.md) are maintained with the distillation software.
+
+To use the E5 checkpoint with the optional WSD command above, explicitly download it first:
+
+```bash
+hf download Tanor/serbian-wsd-distilled-e5-large --revision 749f694999b256039011acfb8f0a4b1b4f388c8c --local-dir models/wsd-distilled-mling
+```
+
+The evaluator reads the saved E5 `query: ` prefix from `training_config.json`. When selecting MiniLM or TeslaXLM instead, explicitly pass `--text-prefix ""` to keep their empty prefix. Keep the tokenizer and all configuration files in the downloaded directory. The compatible sense inventory remains a separate input; the model license is MIT and does not change the terms of that inventory.
 
 For a reusable application API and an offline example, see the [Serbian WordNet Sentiment Toolkit](https://github.com/sasa5linkar/serbian-wordnet-sentiment-toolkit). The toolkit reports zero coverage as `unscored`; this research evaluator preserves its neutral fallback.
